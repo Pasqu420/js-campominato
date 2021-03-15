@@ -20,37 +20,41 @@
 // Le validazioni e i controlli possiamo farli anche in un secondo momento.
 // Ricordatevi che se non sappiamo quante volte dobbiamo fare una cosa ci serve…
 
-//random pc
-var pcArr = [];
-for (var i=0;i<16;i++) {
-  var pc = Math.ceil(Math.random()*100);
-  if (pcArr.includes(pc)) {
-    i--
-  }else {
-    pcArr.push(pc);
+function campominato () {
+  //random pc
+  var pcArr = [];
+  for (var i=0;i<16;i++) {
+    var pc = Math.ceil(Math.random()*100);
+    if (pcArr.includes(pc)) {
+      i--
+    }else {
+      pcArr.push(pc);
+    }
   }
-}
-console.log(pcArr);
+  console.log(pcArr);
 
-//num scelti dall'user
-var record = 0;
-while (100 - pcArr.length) {
+  //num scelti dall'user
+  var record = 0;
+  while (100 - pcArr.length) {
 
-  // var user = parseInt(prompt('inserisci un numero compreso tra 1 e 100'));
+    var user = parseInt(prompt('inserisci un numero compreso tra 1 e 100'));
 
- //condizione se i num sono inclusi nel pcArr
-  if (pcArr.includes(user)) {
-    console.log("hai perso ", "il ", user, " è già compreso");
-    break;
-  }else if (user > 100) { // se supera il range
-    alert('inserisci un numero compreso tra 1 e 100');
-    i--
-  }else { // se non sono inclusi
-    pcArr.push(user);
-    record +=1
+   //condizione se i num sono inclusi nel pcArr
+    if (pcArr.includes(user)) {
+      console.log("hai perso, il numero ", user, " è già compreso");
+      break;
+    }else if (user > 100) { // se supera il range
+      alert('inserisci un numero compreso tra 1 e 100');
+      i--
+    }else { // se non sono inclusi
+      pcArr.push(user);
+      record +=1
+    }
+    i++
+    console.log(user);
   }
-  i++
-  console.log(user);
+  console.log(pcArr);
+  console.log("punteggio ",record);
 }
-console.log(pcArr);
-console.log("numeri inseriti ",record);
+
+campominato();
