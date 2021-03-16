@@ -20,8 +20,8 @@
 // Le validazioni e i controlli possiamo farli anche in un secondo momento.
 // Ricordatevi che se non sappiamo quante volte dobbiamo fare una cosa ci serve…
 
-          //solo per prova(da fare con input)
-var lvDifficult = parseInt(prompt('scegli il livello: 1,2,3'));
+
+var lvDifficult = parseInt(prompt('scegli il livello di difficoltà: 1,2,3'));
 value = 0;
 if (lvDifficult == 1) {
   value=100;
@@ -30,13 +30,13 @@ if (lvDifficult == 1) {
 }else if (lvDifficult == 3) {
   value=50;
 }else if (lvDifficult == 4) { //solo per prova
-  value= 13;
+  value= 20;
 }
 
+//random pc
 function rndPc() {
-  //random pc
   pcArr = [];
-  for (var i=0;i<10;i++) {
+  for (var i=0;i<16;i++) {
     var pc = Math.ceil(Math.random()*value);
     if (pcArr.includes(pc)) {
       i--
@@ -47,6 +47,7 @@ function rndPc() {
   console.log(pcArr);
 }
 
+//scelta num player
 function numUser() {
   var range = value - pcArr.length;
   var record = 0;
@@ -57,17 +58,20 @@ function numUser() {
     if (pcArr.includes(user)) {
       console.log("hai perso, il numero ", user, " è già compreso");
       break;
-    }else if (user > 20) { // se supera il range
-      alert('inserisci un numero compreso tra 1 e 100');
+    }else if (user > value) { // se supera il range
+      alert('inserisci un numero compreso tra 1 e ' value);
       i--
-    }else { // se non sono inclusi
+    }else {
       pcArr.push(user);
-      record +=1
+      record +=1;
     }
     console.log(user);
   }
   console.log(pcArr);
   console.log("punteggio ",record);
+  if (record==range) {
+    console.log("you win");
+  }
 }
 
 function game() {
@@ -75,4 +79,8 @@ function game() {
   numUser();
 }
 
-game();
+// start game
+var start = document.getElementById('start');
+start.addEventListener('click', function() {
+  game();
+});
