@@ -20,11 +20,24 @@
 // Le validazioni e i controlli possiamo farli anche in un secondo momento.
 // Ricordatevi che se non sappiamo quante volte dobbiamo fare una cosa ci serve…
 
-function campominato () {
+          //solo per prova(da fare con input)
+var lvDifficult = parseInt(prompt('scegli il livello: 1,2,3'));
+value = 0;
+if (lvDifficult == 1) {
+  value=100;
+}else if (lvDifficult == 2) {
+  value=80;
+}else if (lvDifficult == 3) {
+  value=50;
+}else if (lvDifficult == 4) { //solo per prova
+  value= 13;
+}
+
+function rndPc() {
   //random pc
-  var pcArr = [];
-  for (var i=0;i<16;i++) {
-    var pc = Math.ceil(Math.random()*100);
+  pcArr = [];
+  for (var i=0;i<10;i++) {
+    var pc = Math.ceil(Math.random()*value);
     if (pcArr.includes(pc)) {
       i--
     }else {
@@ -32,29 +45,34 @@ function campominato () {
     }
   }
   console.log(pcArr);
+}
 
-  //num scelti dall'user
+function numUser() {
+  var range = value - pcArr.length;
   var record = 0;
-  while (100 - pcArr.length) {
-
+  for (var i=0; i<range;i++) {
+    //num scelti dall'user
     var user = parseInt(prompt('inserisci un numero compreso tra 1 e 100'));
-
    //condizione se i num sono inclusi nel pcArr
     if (pcArr.includes(user)) {
       console.log("hai perso, il numero ", user, " è già compreso");
       break;
-    }else if (user > 100) { // se supera il range
+    }else if (user > 20) { // se supera il range
       alert('inserisci un numero compreso tra 1 e 100');
       i--
     }else { // se non sono inclusi
       pcArr.push(user);
       record +=1
     }
-    i++
     console.log(user);
   }
   console.log(pcArr);
   console.log("punteggio ",record);
 }
 
-campominato();
+function game() {
+  rndPc();
+  numUser();
+}
+
+game();
