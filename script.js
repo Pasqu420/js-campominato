@@ -20,35 +20,50 @@
 // Le validazioni e i controlli possiamo farli anche in un secondo momento.
 // Ricordatevi che se non sappiamo quante volte dobbiamo fare una cosa ci serve…
 
+// var lvDifficult = document.getElementById('difficult');
+// lvDifficult.addEventListener('click', function() {
+//   var lvDifficult = document.getElementById('difficult').value;
+//   value = 0;
+//   if (lvDifficult == 1) {
+//     value=100;
+//   }else if (lvDifficult == 2) {
+//     value=80;
+//   }else if (lvDifficult == 3) {
+//     value=50;
+//   }else if (lvDifficult == 4) { //solo per prova
+//     value= 20;
+//   }
+// });
 
-var lvDifficult = parseInt(prompt('scegli il livello di difficoltà: 1,2,3'));
-value = 0;
-if (lvDifficult == 1) {
-  value=100;
-}else if (lvDifficult == 2) {
-  value=80;
-}else if (lvDifficult == 3) {
-  value=50;
-}else if (lvDifficult == 4) { //solo per prova
-  value= 20;
-}
+  var lvDifficult = parseInt(prompt('scegli il livello di difficoltà: 1,2,3'));
+  var value = 0;
+  if (lvDifficult == 1) {
+    value=100;
+  }else if (lvDifficult == 2) {
+    value=80;
+  }else if (lvDifficult == 3) {
+    value=50;
+  }else if (lvDifficult == 4) { //solo per prova
+    value= 20;
+  }
+
 
 //random pc
 function rndPc() {
-  pcArr = [];
+  var pcArr = [];
   while (pcArr.length<16) {
     var pc = Math.ceil(Math.random()*value);
-    if (pcArr.includes(pc)) {
-
-    }else {
+    if (!pcArr.includes(pc)) {
       pcArr.push(pc);
     }
   }
   console.log(pcArr);
+  return pcArr;
 }
 
 //scelta num player
 function numUser() {
+  var pcArr = rndPc();
   var range = value - pcArr.length;
   var myNum = [];
   var record = 0;
@@ -59,10 +74,8 @@ function numUser() {
     if (pcArr.includes(user)) {
       console.log("hai perso, il numero ", user, " è già compreso");
       break;
-    }else if (myNum.includes(user)) {
-      console.log("hai già inserito questo numero");
-    }else if (user > value) { // se supera il range
-      alert('inserisci un numero compreso tra 1 e '+ value);
+    }else if (myNum.includes(user) || user > value || user < 1) { //condizione se non sono numeri validi
+      console.log("inserisci un numero valido");
     }else {
       myNum.push(user);
       record +=1;
@@ -78,7 +91,6 @@ function numUser() {
 }
 
 function game() {
-  rndPc();
   numUser();
 }
 
