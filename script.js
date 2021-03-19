@@ -35,24 +35,43 @@
 //   }
 // });
 
-  var lvDifficult = parseInt(prompt('scegli il livello di difficoltà: 1,2,3'));
-  var value = 0;
-  if (lvDifficult == 1) {
-    value=100;
-  }else if (lvDifficult == 2) {
-    value=80;
-  }else if (lvDifficult == 3) {
-    value=50;
-  }else if (lvDifficult == 4) { //solo per prova
-    value= 20;
+  // var value = 0;
+  // if (lvDifficult == 1) {
+  //   value=100;
+  // }else if (lvDifficult == 2) {
+  //   value=80;
+  // }else if (lvDifficult == 3) {
+  //   value=50;
+  // }else if (lvDifficult == 4) { //solo per prova
+  //   value= 20;
+  // }
+
+  function lvl(lvDifficult) {
+    var lvl = parseInt(prompt('scegli il livello di difficoltà: 1,2,3'));
+    switch (lvDifficult) {
+      case 0:
+      var lvl = 100;
+        break;
+      case 1:
+      lvl = 80;
+        break;
+      case 2:
+        lvl = 50;
+        break;
+      default:
+        lvl = 100
+        break;
+    }
+    return lvl;
+    console.log(lvl);
   }
 
-
+var difficult = lvl(lvl);
 //random pc
 function rndPc() {
   var pcArr = [];
   while (pcArr.length<16) {
-    var pc = Math.ceil(Math.random()*value);
+    var pc = Math.ceil(Math.random()*difficult);
     if (!pcArr.includes(pc)) {
       pcArr.push(pc);
     }
@@ -64,7 +83,7 @@ function rndPc() {
 //scelta num player
 function numUser() {
   var pcArr = rndPc();
-  var range = value - pcArr.length;
+  var range = difficult - pcArr.length;
   var myNum = [];
   var record = 0;
   while (myNum.length<range) {
@@ -74,7 +93,7 @@ function numUser() {
     if (pcArr.includes(user)) {
       console.log("hai perso, il numero ", user, " è già compreso");
       break;
-    }else if (myNum.includes(user) || user > value || user < 1) { //condizione se non sono numeri validi
+    }else if (myNum.includes(user) || user > difficult || user < 1) { //condizione se non sono numeri validi
       console.log("inserisci un numero valido");
     }else {
       myNum.push(user);
