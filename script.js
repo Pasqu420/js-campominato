@@ -20,21 +20,6 @@
 // Le validazioni e i controlli possiamo farli anche in un secondo momento.
 // Ricordatevi che se non sappiamo quante volte dobbiamo fare una cosa ci serve…
 
-// var lvDifficult = document.getElementById('difficult');
-// lvDifficult.addEventListener('click', function() {
-//   var lvDifficult = document.getElementById('difficult').value;
-//   value = 0;
-//   if (lvDifficult == 1) {
-//     value=100;
-//   }else if (lvDifficult == 2) {
-//     value=80;
-//   }else if (lvDifficult == 3) {
-//     value=50;
-//   }else if (lvDifficult == 4) { //solo per prova
-//     value= 20;
-//   }
-// });
-
   // var value = 0;
   // if (lvDifficult == 1) {
   //   value=100;
