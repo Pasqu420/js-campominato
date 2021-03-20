@@ -20,17 +20,6 @@
 // Le validazioni e i controlli possiamo farli anche in un secondo momento.
 // Ricordatevi che se non sappiamo quante volte dobbiamo fare una cosa ci serve…
 
-  // var value = 0;
-  // if (lvDifficult == 1) {
-  //   value=100;
-  // }else if (lvDifficult == 2) {
-  //   value=80;
-  // }else if (lvDifficult == 3) {
-  //   value=50;
-  // }else if (lvDifficult == 4) { //solo per prova
-  //   value= 20;
-  // }
-
   function lvl() {
     var lvl = parseInt(prompt('scegli il livello di difficoltà: 1,2,3'));
     switch (lvl) {
@@ -52,9 +41,7 @@
         break;
     }
     return value;
-    console.log(lvl);
   }
-
 var difficult = lvl();
 //random pc
 function rndPc() {
@@ -68,7 +55,6 @@ function rndPc() {
   console.log(pcArr);
   return pcArr;
 }
-
 //scelta num player
 function numUser() {
   var pcArr = rndPc();
@@ -90,8 +76,6 @@ function numUser() {
     }
     console.log(user);
   }
-
-  console.log(pcArr);
   console.log("punteggio ",record);
   if (record==range) {
     console.log("you win");
