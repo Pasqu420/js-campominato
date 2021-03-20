@@ -31,27 +31,31 @@
   //   value= 20;
   // }
 
-  function lvl(lvDifficult) {
+  function lvl() {
     var lvl = parseInt(prompt('scegli il livello di difficoltà: 1,2,3'));
-    switch (lvDifficult) {
-      case 0:
-      var lvl = 100;
-        break;
+    switch (lvl) {
       case 1:
-      lvl = 80;
+      var lvl = 1;
+      var value = 100;
         break;
       case 2:
-        lvl = 50;
+      lvl = 2;
+      value = 80;
+        break;
+      case 3:
+        lvl = 3;
+        value = 50;
         break;
       default:
-        lvl = 100
+        lvl = 1
+        value = 100;
         break;
     }
-    return lvl;
+    return value;
     console.log(lvl);
   }
 
-var difficult = lvl(lvl);
+var difficult = lvl();
 //random pc
 function rndPc() {
   var pcArr = [];
